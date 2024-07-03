@@ -1,0 +1,146 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+      <div class="row">   
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <h4 class="card-title">Details</h4>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-2">
+                  <a href="{% url 'add_loan'%}" class="btn mb-2" style="background-color: rgb(8, 26, 41); color: white; ">Add</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <input type="text" class="form-control"id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" style="color:rgb(0, 0, 0);">
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table">      
+                  <thead>
+                    <tr>
+                      <th> SlNo </th>
+                      <th> Date</th>
+                      <th> Staff Name </th>
+                      <th> Customer Name </th>
+                      <th> Amount </th>
+                      <th> Status </th>
+                      <th> Matter </th>
+                      <th> Follow Up </th>
+                    </tr>
+                  </thead>
+                  <tbody id="myTable">
+                    {% for i in var%}
+                    <tr>
+                      <td> <div class="form-check form-check-muted m-1">{{forloop.counter}}</div></td>
+                      <td>{{i.date|date:"d-m-Y"}}</td>
+                      <td>{{i.s_name}}</td>
+                      <td>{{i.c_name}}</td>
+                      <td>{{i.amount}}</td>
+
+                      {% if i.status == "Done"%}
+                      <td><label class="badge badge-gradient-success">DONE</label></td>
+
+                      {% elif i.status == "Progress"%}
+                      <td><label class="badge badge-gradient-warning">PROGRESS</label></td>
+
+                      {% elif i.status == "On Hold"%}
+                      <td><label class="badge badge-gradient-info">ON HOLD</label></td>
+
+                      {% elif i.status == "Rejected"%}
+                      <td><label class="badge badge-gradient-danger">REJECTED</label></td>
+
+                      {% else %}
+                      <td>{{i.status}}</td>
+
+                      {%endif%}
+
+                      <td>{{i.matter}}</td>
+                      <td>{{i.followup|date:"d-m-Y"}}</td>
+                    </tr>
+                    {%endfor%}
+
+                    <!-- <tr>
+                      <td>
+                        <div class="form-check form-check-muted m-0">
+                          1
+                        </div>
+                      </td>
+                      <td>
+                        <span class="ps-2">Henry Klein</span>
+                      </td> 
+                      <td>
+                        <span class="ps-2">Henry Klein</span>
+                      </td>                    
+                      <td> 15000 </td>
+                      <td>
+                        <label class="badge badge-gradient-success">DONE</label>
+                      </td>
+                      <td> Fund is recieved </td>
+                      <td> Dec 5, 2017 </td>
+                    </tr> -->
+                    <!-- <tr>
+                      <td>
+                        <div class="form-check form-check-muted m-0">
+                          2
+                        </div>
+                      </td>
+                      <td>
+                          <span class="ps-2">Estella Bryan</span>
+                      </td>
+                      <td>
+                        <span class="ps-2">Estella Bryan</span>
+                      </td>
+                      <td> 12000 </td>
+                      <td>
+                        <label class="badge badge-gradient-warning">PROGRESS</label>
+                      </td>
+                      <td> High loading time </td>
+                      <td> Dec 12, 2017 </td>                   
+                    </tr> -->
+                    <!-- <tr>
+                      <td>
+                        <div class="form-check form-check-muted m-0">
+                          3
+                        </div>
+                      </td>
+                      <td>
+                          <span class="ps-2">Peter Gill</span>
+                      </td>
+                      <td>
+                        <span class="ps-2">Peter Gill</span>
+                     </td>
+                      <td> 10000 </td>
+                      <td>
+                        <label class="badge badge-gradient-danger">REJECTED</label>
+                      </td>
+                      <td> Loosing control on server </td>
+                      <td> Dec 3, 2017 </td>
+                    </tr> -->
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+    </script>
+
+{% endblock%}

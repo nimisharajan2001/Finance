@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Finance</title>
+    <link rel="stylesheet" href="{% static 'css/materialdesignicons.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/vendor.bundle.base.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial navbar -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo"><h1 style="font-size: 50px;">Finance</h1></a>
+          <a class="navbar-brand brand-logo-mini"><h1 style="font-size: 40px;">F</h1></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span><i class="bi bi-list"></i></span>
+          </button>
+        
+          <ul class="navbar-nav navbar-nav-right">
+            
+            <li class="nav-item nav-logout d-none d-lg-block">
+              <a class="nav-link" href="#">
+                <i class="bi bi-box-arrow-right" style="outline-color: red;"></i>
+              </a>
+            </li>
+            
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial sidebar-->
+      <div class="container-fluid page-body-wrapper">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item mt-2">
+                <a class="nav-link" href="{% url 'Staff' %}">
+                    <i class="bi bi-people-fill"></i>
+                    <span class="menu-title ms-4"><h6>Staff</h6></span>
+                  </a>        
+            </li>
+            <li class="nav-item mt-2">
+                <a class="nav-link" href="{% url 'Customer' %}">
+                    <i class="bi bi-person-circle"></i>
+                    <span class="menu-title ms-4"><h6>Customer</h6></span>
+                  </a>        
+            </li>
+            <li class="nav-item mt-2">
+                <a class="nav-link" href="{% url 'Deposit' %}">
+                    <i class="bi bi-safe-fill"></i>
+                    <span class="menu-title ms-4"><h6>Deposite</h6></span>
+                  </a>        
+            </li>
+            <li class="nav-item mt-2">
+                <a class="nav-link" href="{% url 'Loan' %}">
+                    <i class="bi bi-cash-coin"></i>
+                    <span class="menu-title ms-4"><h6>Loan</h6></span>
+                  </a>        
+            </li>
+            <li class="nav-item mt-2">
+                <a class="nav-link" href="{% url 'report' %}">
+                    <i class="bi bi-file-check-fill"></i>
+                    <span class="menu-title ms-4"><h6>Report</h6></span>
+                  </a>        
+            </li>
+          </ul>
+        </nav>
+
+        <div class="main-panel">
+            <div class="content-wrapper">
+              {%block content%} {%endblock%}
+            </div>
+        </div>
+        <!-- <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">
+                 Dashboard
+              </h3>
+              
+            </div> -->
+            
+            <!-- <div class="row">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Recent Tickets</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th> Assignee </th>
+                            <th> Subject </th>
+                            <th> Status </th>
+                            <th> Last Update </th>
+                            <th> Tracking ID </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <img src="{% static 'assets/images/faces/face1.jpg' %}" class="me-2" alt="image"> David Grey
+                            </td>
+                            <td> Fund is not recieved </td>
+                            <td>
+                              <label class="badge badge-gradient-success">DONE</label>
+                            </td>
+                            <td> Dec 5, 2017 </td>
+                            <td> WD-12345 </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="{% static 'assets/images/faces/face2.jpg' %}" class="me-2" alt="image"> Stella Johnson
+                            </td>
+                            <td> High loading time </td>
+                            <td>
+                              <label class="badge badge-gradient-warning">PROGRESS</label>
+                            </td>
+                            <td> Dec 12, 2017 </td>
+                            <td> WD-12346 </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="{% static 'assets/images/faces/face3.jpg' %}" class="me-2" alt="image"> Marina Michel
+                            </td>
+                            <td> Website down for one week </td>
+                            <td>
+                              <label class="badge badge-gradient-info">ON HOLD</label>
+                            </td>
+                            <td> Dec 16, 2017 </td>
+                            <td> WD-12347 </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="{% static 'assets/images/faces/face4.jpg' %}" class="me-2" alt="image"> John Doe
+                            </td>
+                            <td> Loosing control on server </td>
+                            <td>
+                              <label class="badge badge-gradient-danger">REJECTED</label>
+                            </td>
+                            <td> Dec 3, 2017 </td>
+                            <td> WD-12348 </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            
+           
+          <!-- </div>
+        </div> -->
+      </div>
+    </div>
+    <script src="{% static 'js/vendor.bundle.base.js' %}"></script>
+    <script src="{% static 'js/chart.min.js' %}"></script>
+    <script src="{% static 'js/off-canvas.js' %}"></script>
+    <script src="{% static 'js/jquery.cookies.js' %}"></script>
+    <script src="{% static 'js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'js/misc.js' %}"></script>
+    <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/todolist.js' %}"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+  </body>
+</html>
